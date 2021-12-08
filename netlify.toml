@@ -1,6 +1,5 @@
 [[redirects]]
 from = "/api/*"
-to = "https://61b094073c954f001722a496.mockapi.io/api/"
+to = "https://61b094073c954f001722a496.mockapi.io/:splat"
 status = 200
 force = true
-conditions = {Role = ["admin", "cms"]}
