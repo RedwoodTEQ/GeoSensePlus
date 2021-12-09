@@ -52,9 +52,7 @@ npm test
 
 # Deploy & Preview Services: Netlify
 
-This is app deployed on Netlify.
-
-Site: geosenseplus.netlify.app
+[Depolyment](geosenseplus.netlify.app) by Netlify.
 
 All merge to master branch triggers deployment.
 
