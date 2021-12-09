@@ -6,7 +6,7 @@ import { API } from './typings';
 
 /** 获取当前的用户 GET /api/currentUser */
 export async function currentUser(options?: { [key: string]: any }) {
-  console.log('[Implementation] No authorization check for user data fetch.');
+  console.log('[Unimplemented] No authorization check for user data fetch.');
   return request<{
     data: API.CurrentUser;
   }>('/api/currentUser', {
