@@ -1,6 +1,8 @@
 // @ts-ignore
 /* eslint-disable */
 
+import { SignInOpts } from '@aws-amplify/auth/src/types/index';
+
 declare namespace API {
   type CurrentUser = {
     name?: string;
@@ -62,8 +64,8 @@ declare namespace API {
   };
 
   type LoginParams = {
-    username?: string;
-    password?: string;
+    username: string | SignInOpts;
+    password: string;
     autoLogin?: boolean;
     type?: string;
   };

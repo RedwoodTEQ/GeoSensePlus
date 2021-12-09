@@ -7,6 +7,17 @@ import Footer from '@/components/Footer';
 import { currentUser as queryCurrentUser } from './services/ant-design-pro/api';
 import { BookOutlined, LinkOutlined } from '@ant-design/icons';
 
+import Amplify from 'aws-amplify';
+import { COGNITO } from './configs/aws';
+
+import { API } from './services/ant-design-pro/typings';
+
+Amplify.configure({
+  aws_cognito_region: COGNITO.REGION,
+  aws_user_pools_id: COGNITO.USER_POOL_ID,
+  aws_user_pools_web_client_id: COGNITO.APP_CLIENT_ID,
+});
+
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
 

@@ -1,9 +1,12 @@
 // @ts-ignore
 /* eslint-disable */
 import { request } from 'umi';
+import { Auth } from 'aws-amplify';
+import { API } from './typings';
 
 /** 获取当前的用户 GET /api/currentUser */
 export async function currentUser(options?: { [key: string]: any }) {
+  console.log('[Implementation] No authorization check for user data fetch.');
   return request<{
     data: API.CurrentUser;
   }>('/api/currentUser', {
@@ -21,15 +24,25 @@ export async function outLogin(options?: { [key: string]: any }) {
 }
 
 /** 登录接口 POST /api/login/account */
-export async function login(body: API.LoginParams, options?: { [key: string]: any }) {
-  return request<API.LoginResult>('/api/login/account', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    data: body,
-    ...(options || {}),
-  });
+export async function login(
+  body: API.LoginParams,
+  options?: { [key: string]: any },
+): Promise<{ status: 'ok' | 'failed'; response?: any; error?: any }> {
+  // return request<API.LoginResult>('/api/login/account', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //   },
+  //   data: body,
+  //   ...(options || {}),
+  // });
+
+  try {
+    const response = await Auth.signIn(body.username, body.password);
+    return { status: 'ok', response };
+  } catch (error) {
+    return { status: 'failed', error };
+  }
 }
 
 /** 此处后端没有提供注释 GET /api/notices */

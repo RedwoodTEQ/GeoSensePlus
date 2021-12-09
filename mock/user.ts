@@ -30,6 +30,10 @@ const getAccess = () => {
 export default {
   // 支持值为 Object 和 Array
   'GET /api/currentUser': (req: Request, res: Response) => {
+    // TODO: Implement secured API to fetch user data
+    // So far always return admin user data.
+    access = 'admin';
+
     if (!getAccess()) {
       res.status(401).send({
         data: {
@@ -119,7 +123,7 @@ export default {
   ],
   'POST /api/login/account': async (req: Request, res: Response) => {
     const { password, username, type } = req.body;
-    await waitTime(2000);
+    await waitTime(500);
     if (password === 'ant.design' && username === 'admin') {
       res.send({
         status: 'ok',
