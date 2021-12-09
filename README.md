@@ -49,3 +49,15 @@ npm run lint:fix
 ```bash
 npm test
 ```
+
+# Deploy & Preview Services: Netlify
+
+This is app deployed on Netlify.
+
+Site: geosenseplus.netlify.app
+
+All merge to master branch triggers deployment.
+
+All merge request targting to master branch triggers preview deployment.
+
+Signup page is in working.
